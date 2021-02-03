@@ -24,15 +24,21 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
+  dartz: ^0.9.2
   flutter_bloc: ^6.1.1
   freezed_annotation: ^0.12.0
+  get_it: ^5.0.6
+  injectable: ^1.0.7
+  shared_preferences: ^0.5.12+4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: null
+  freezed: null
+  injectable_generator: null
   lint: ^1.0.0
-  build_runner:
-  freezed:
+  mockito: ^4.1.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_calculator_app/core/constants/strings.dart';
+import 'package:flutter_calculator_app/injection.dart';
 import 'package:flutter_calculator_app/pages/calculator_screen.dart';
 
 import 'blocs/theme/theme_bloc.dart';
 
 void main() {
-  runApp(
-    BlocProvider(
-      create: (_) => ThemeBloc()..add(const ThemeEvent.started()),
-      child: MyApp(),
+  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
+    (_) => runApp(
+      BlocProvider(
+        create: (_) => getIt<ThemeBloc>()..add(const ThemeEvent.started()),
+        child: MyApp(),
+      ),
     ),
   );
 }
@@ -31,7 +37,7 @@ class MyApp extends StatelessWidget {
         );
       },
       builder: (context, state) => MaterialApp(
-        title: 'Calculator',
+        title: CalcStrings.appTitle,
         themeMode: state.themeMode,
         darkTheme: ThemeData(
           scaffoldBackgroundColor: const Color(0xff374352),
